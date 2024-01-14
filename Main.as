@@ -141,7 +141,10 @@ package
 		//帧率计算工具
 		private function countFrames(e: Event)
 		{
-			recentlyFrames++;
+			if (e.target == timeLineTester)
+			{
+				recentlyFrames++;
+			}
 		}
 		private function calculateFrames(e: Event)
 		{

@@ -126,7 +126,7 @@
 			{
 				starAngrySkillLoader.contentLoaderInfo.addEventListener(PetdoctorEvent.IO_ERROR, starAngrySkillLoadFailed);
 				starAngrySkillLoader.contentLoaderInfo.addEventListener(PetdoctorEvent.COMPLETE, starAngrySkillLoaded);
-				starAngrySkillLoader.load(new URLRequest("https://seer.61.com/resource/fightResource/skill/swf/" + (500000 + Number(id1)) + "1" + ".swf"));
+				starAngrySkillLoader.load(new URLRequest("https://seer.61.com/resource/fightResource/skill/swf/" + (500000 + Number(id1)) + "1" + ".swf?" + (new Date()).time.toString(16)));
 			}
 			if (myLoadingTips)
 			{
@@ -192,7 +192,7 @@
 			function starAngrySkillLoadFailed(e: Event)
 			{
 				e.target.removeEventListener(PetdoctorEvent.IO_ERROR, starAngrySkillLoadFailed);
-				starAngrySkillLoader.load(new URLRequest("https://seer.61.com/resource/fightResource/skill/swf/" + 1900032911 + ".swf"));
+				starAngrySkillLoader.load(new URLRequest("https://seer.61.com/resource/fightResource/skill/swf/" + 1900032911 + ".swf?" + (new Date()).time.toString(16)));
 			}
 			function starAngrySkillLoaded(e: Event)
 			{
@@ -272,12 +272,12 @@
 		}
 		private function getFightAnimeURL(id: String): String
 		{
-			const str: String = "https://seer.61.com/resource/fightResource/pet/swf/" + id + ".swf";
+			const str: String = "https://seer.61.com/resource/fightResource/pet/swf/" + id + ".swf?" + (new Date()).time.toString(16);
 			return str;
 		}
 		private function getFightHeadURL(id: String): String
 		{
-			const str: String = "https://seer.61.com/resource/pet/head/" + id + ".swf";
+			const str: String = "https://seer.61.com/resource/pet/head/" + id + ".swf?" + (new Date()).time.toString(16);
 			return str;
 		}
 		private function getBytesNumString(bytes: uint): String
@@ -325,7 +325,7 @@
 				qualityList.getChildByName("quality_mc_1").gotoAndStop(2);
 				qualityList.getChildByName("quality_mc_2").gotoAndStop(1);
 			}
-			output("stage品质修改：" + stage.quality);
+			output("舞台品质修改：" + stage.quality);
 		}
 
 		private function playExtension(e: MouseEvent)
@@ -334,8 +334,16 @@
 			{
 				case "ca":
 					clearEventListener(currFightAnime);
-					currFightAnime.gotoAndStop("transform");
-					playingAction = "transform";
+					try
+					{
+						currFightAnime.gotoAndStop("transform");
+						playingAction = "transform";
+					}
+					catch (err: Error)
+					{
+						output(err.message);
+						return;
+					}
 					output("【" + myInfoPanel.name_txt.text + "】使用了" + "形态切换");
 					currFightAnime.addEventListener(PetdoctorEvent.EXIT_FRAME, startPlayTransform);
 					break;
@@ -367,24 +375,48 @@
 		private function playAttack(e: MouseEvent)
 		{
 			clearEventListener(currFightAnime);
-			currFightAnime.gotoAndStop("attack");
-			playingAction = "attack";
+			try
+			{
+				currFightAnime.gotoAndStop("attack");
+				playingAction = "attack";
+			}
+			catch (err: Error)
+			{
+				output(err.message);
+				return;
+			}
 			output("【" + myInfoPanel.name_txt.text + "】使用了" + "物理攻击");
 			currFightAnime.addEventListener(PetdoctorEvent.EXIT_FRAME, startPlay);
 		}
 		private function playSa(e: MouseEvent)
 		{
 			clearEventListener(currFightAnime);
-			currFightAnime.gotoAndStop("sa");
-			playingAction = "sa";
+			try
+			{
+				currFightAnime.gotoAndStop("sa");
+				playingAction = "sa";
+			}
+			catch (err: Error)
+			{
+				output(err.message);
+				return;
+			}
 			output("【" + myInfoPanel.name_txt.text + "】使用了" + "特殊攻击");
 			currFightAnime.addEventListener(PetdoctorEvent.EXIT_FRAME, startPlay);
 		}
 		private function playCp(e: MouseEvent)
 		{
 			clearEventListener(currFightAnime);
-			currFightAnime.gotoAndStop("cp");
-			playingAction = "cp";
+			try
+			{
+				currFightAnime.gotoAndStop("cp");
+				playingAction = "cp";
+			}
+			catch (err: Error)
+			{
+				output(err.message);
+				return;
+			}
 			output("【" + myInfoPanel.name_txt.text + "】使用了" + "属性攻击");
 			currFightAnime.addEventListener(PetdoctorEvent.EXIT_FRAME, startPlay);
 		}
@@ -393,7 +425,15 @@
 			clearEventListener(currFightAnime);
 			if (currFightAnime.currentLabel != "appear")
 			{
-				currFightAnime.gotoAndStop("appear");
+				try
+				{
+					currFightAnime.gotoAndStop("appear");
+				}
+				catch (err: Error)
+				{
+					output(err.message);
+					return;
+				}
 			}
 			else
 			{

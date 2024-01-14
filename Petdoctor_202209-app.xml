@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!-- 
+	Usage:
+
+	To localize the description, use the following format for the description element.
+	<description>
+	<text xml:lang="en">English App description goes here</text>
+	<text xml:lang="fr">French App description goes here</text>
+	<text xml:lang="ja">Japanese App description goes here</text>
+	</description>
+
+	To localize the name, use the following format for the name element.
+	<name>
+	<text xml:lang="en">English App name goes here</text>
+	<text xml:lang="fr">French App name goes here</text>
+	<text xml:lang="ja">Japanese App name goes here</text>
+	</name>
+-->
+<application xmlns="http://ns.adobe.com/air/application/50.2">
+    <id>xiaoChi.Petdoctor</id>
+    <versionNumber>23.3.3</versionNumber>
+    <versionLabel>2023.6</versionLabel>
+    <filename>Petdoctor 2023</filename>
+    <description/>
+    <name>Petdoctor 2023</name>
+    <copyright>《赛尔号》页游玩家晓痴自主研发的对战动画播放器。</copyright>
+    <initialWindow>
+        <content>Petdoctor_202209.swf</content>
+        <systemChrome>standard</systemChrome>
+        <requestedDisplayResolution>standard</requestedDisplayResolution>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <fullScreen>true</fullScreen>
+        <aspectRatio>landscape</aspectRatio>
+        <renderMode>direct</renderMode>
+        <depthAndStencil>true</depthAndStencil>
+        <maximizable>true</maximizable>
+        <minimizable>true</minimizable>
+        <resizable>true</resizable>
+        <autoOrients>true</autoOrients>
+        <allowLowQuality>true</allowLowQuality>
+    </initialWindow>
+    <architecture>64</architecture>
+    <windows>
+		  <UseWebView2>true</UseWebView2>
+	</windows>
+    <icon>
+		  <image16x16>resource/icon_16.png</image16x16>
+        <image32x32>resource/icon_32.png</image32x32>
+        <image36x36>resource/icon_36.png</image36x36>
+        <image48x48>resource/icon_48.png</image48x48>
+        <image72x72>resource/icon_72.png</image72x72>
+        <image96x96>resource/icon_96.png</image96x96>
+        <image128x128>resource/icon_128.png</image128x128>
+        <image144x144>resource/icon_144.png</image144x144>
+        <image192x192>resource/icon_192.png</image192x192>
+        <image256x256>resource/icon_256.png</image256x256>
+        <image512x512>resource/icon_512.png</image512x512>
+  </icon>
+    <customUpdateUI>false</customUpdateUI>
+    <allowBrowserInvocation>false</allowBrowserInvocation>
+  <android>
+    <manifestAdditions><![CDATA[<manifest>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+</manifest>]]></manifestAdditions>
+  </android>
+  <supportedLanguages>zh</supportedLanguages>
+</application>
